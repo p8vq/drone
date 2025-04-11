@@ -5,6 +5,7 @@ import keyboard
 import time
 import threading
 
+
 drone = tello.Tello()
 
 def show_camera_frames():
@@ -17,15 +18,17 @@ def show_camera_frames():
             break
     cv2.destroyAllWindows()
     
-t1 = threading.Thread(target=show_camera_frames, args=())
-t1.start()
-
 drone.connect()
 # connects and sleeps to ensure it is ready
 drone.takeoff()
+drone.streamon()
+camera_thread = threading.Thread(target=show_camera_frames, args=())
+camera_thread.start()
 time.sleep(2)
 # takes off
+
 # connects and takes off
+
 while True:
     if keyboard.is_pressed('w'):
             drone.move_forward(30)
@@ -53,4 +56,5 @@ while True:
                
     if keyboard.is_pressed('l'):
             drone.land()
+            drone.streamoff()
             break
