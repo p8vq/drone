@@ -5,6 +5,7 @@ import keyboard
 import time
 import threading
 
+import numpy as np
 
 drone = tello.Tello()
 
@@ -14,9 +15,29 @@ def show_camera_frames():
         frame = drone.get_frame_read().frame
         cv2.imshow("Frame", frame)
         # While it is running, cv2 gets the current frame on the camera and outputs it to a window
+       
+       
+        image = cv2.imread("Frame", frame)
+        # Calculate the average color of each channel
+        average_color_per_row = np.average(image, axis=0)
+        average_color = np.average(average_color_per_row, axis=0)
+
+        # Convert to integer values
+        average_color = np.uint8(average_color)
+
+        print(f"Average color (BGR): {average_color}")
+       
+       
+       
         if cv2.waitKey(1) & 0xFF == ord('c'):
             break
     cv2.destroyAllWindows()
+    
+    
+       
+       
+    
+    
     
 drone.connect()
 # connects and sleeps to ensure it is ready
