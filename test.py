@@ -47,11 +47,19 @@ while True:
             time.sleep(0.6)      
             
     if keyboard.is_pressed('q'):
-            drone.rotate_counter_clockwise(30)
+            drone.rotate_counter_clockwise(160)
             time.sleep(0.6)             
         
     if keyboard.is_pressed('e'):
-            drone.rotate_clockwise(30)
+            drone.rotate_clockwise(160)
+            time.sleep(0.6) 
+            
+    if keyboard.is_pressed('up'):
+            drone.move_up(30)
+            time.sleep(0.6) 
+            
+    if keyboard.is_pressed('down'):
+            drone.move_down(30)
             time.sleep(0.6) 
                
     if keyboard.is_pressed('l'):
