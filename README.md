@@ -63,4 +63,4 @@ The following colors are as follows:
 
 # Credits
 
-Created by Alexander Goodwine and Caleb
+Created by Alexander Goodwine and Caleb Goffney
